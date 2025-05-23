@@ -21,13 +21,13 @@ export default function TeamPage() {
   }
 
   const openCreateModal = () =>{
-    (document.getElementById('create_modal') as HTMLDialogElement)?.showModal()
+    (document.getElementById('modal') as HTMLDialogElement)?.showModal()
     setCreateOpen(true);
     setJoinOpen(false)
   }
 
   const openJoinModal = () =>{
-    (document.getElementById('create_modal') as HTMLDialogElement)?.showModal()
+    (document.getElementById('modal') as HTMLDialogElement)?.showModal()
     setCreateOpen(false);
     setJoinOpen(true)
   }
@@ -60,7 +60,7 @@ export default function TeamPage() {
 
     {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
-<dialog id="create_modal" className="modal">
+<dialog id="modal" className="modal">
   <div className="modal-box w-[35vw] max-w-none rounded-md">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
