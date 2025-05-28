@@ -1,44 +1,32 @@
-'use client'
 import React from 'react'
 
-import { useState } from 'react'
+
 
 import SidebarButton from './SidebarButton';
 import ProfileModal from './ProfileModal';
 
-export default function Sidebar() {
-  const [dashBoardOpen, setDashboardOpen] = useState<boolean>(true);
-  const [calendarOpen, setCalendarOpen] = useState<boolean>(false)
-  const [noteOpen, setNoteOpen] = useState<boolean>(false)
-  const [memberOpen, setMemberOpen] = useState<boolean>(false)
+interface SidebarProps {
+  dashBoardOpen: boolean
+  calendarOpen: boolean
+  noteOpen: boolean
+  memberOpen: boolean
+  openDashboard: () => void
+  openCalendar: () => void
+  openNote: () => void
+  openMember: () => void
+}
 
-  const openDashboard = () => {
-    setDashboardOpen(true)
-    setCalendarOpen(false)
-    setNoteOpen(false)
-    setMemberOpen(false)
-  }
-
-  const openCalendar = () =>{
-    setCalendarOpen(true)
-    setDashboardOpen(false)
-    setNoteOpen(false)
-    setMemberOpen(false)
-  }
-
-  const openNote = () => {
-    setNoteOpen(true)
-    setCalendarOpen(false)
-    setDashboardOpen(false)
-    setMemberOpen(false)
-  }
-
-  const openMember = () =>{
-    setMemberOpen(true)
-    setDashboardOpen(false)
-    setCalendarOpen(false)
-    setNoteOpen(false)
-  }
+export default function Sidebar({
+  dashBoardOpen,
+  calendarOpen,
+  noteOpen,
+  memberOpen,
+  openDashboard,
+  openCalendar,
+  openNote,
+  openMember
+}: SidebarProps){
+  
 
   const showProfile = () =>{
     (document.getElementById('profile_modal') as HTMLDialogElement).showModal()
