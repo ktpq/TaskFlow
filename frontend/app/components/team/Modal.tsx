@@ -1,4 +1,5 @@
 import React from 'react'
+import toast from 'react-hot-toast'
 
 interface props{
     setOpen:(value:string) => void;
@@ -7,10 +8,18 @@ interface props{
 }
 
 export default function Modal({setOpen, joinOpen, createOpen}: props) {
+
+  const toastAlert = () =>{
+    const modal = document.getElementById("modal") as HTMLDialogElement;
+    modal?.close();
+    toast.success("Create team successfully")
+  }
+
+
   return (
     <>
     <dialog id="modal" className="modal">
-  <div className="modal-box w-[35vw] max-w-none rounded-md">
+  <div className="modal-box w-[35vw] max-w-none rounded-md max-lg:w-[70vw] max-md:w-[95vw]">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -30,7 +39,7 @@ export default function Modal({setOpen, joinOpen, createOpen}: props) {
             <textarea className='border w-full border-[#b1adad] px-4 py-3 my-2 rounded-lg' placeholder="Describe your team's purpose"/>
 
             <div className='flex justify-end mt-3'>
-                <button className='py-2 px-4 gradient text-white rounded-lg hover:-translate-y-1 duration-300'> Create Team </button>
+                <button className='py-2 px-4 gradient text-white rounded-lg hover:-translate-y-1 duration-300' onClick={toastAlert}> Create Team </button>
             </div>
         </section>
     ): null}

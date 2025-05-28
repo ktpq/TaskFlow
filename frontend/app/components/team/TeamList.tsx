@@ -1,9 +1,8 @@
 import React from 'react'
 
+
 export default function TeamList() {
   const teams = ["team1"];
-  
-
   
   return (
     <section className="container mx-auto mt-10 overflow-x-hidden">
@@ -53,7 +52,7 @@ export default function TeamList() {
 
                 <div className='text-sm flex justify-between mt-4'>
                     <button className='px-3 py-2 bg-[#ce6d9e] rounded-lg shadow-md hover:bg-[#c285a3] duration-300'> Invite Members </button>
-                    <button className='px-3 py-2 bg-white rounded-lg text-[#d01673] shadow-md hover:bg-[#e7e5e5] duration-300'> Enter Team </button>
+                    <a className='px-3 py-2 bg-white rounded-lg text-[#d01673] shadow-md hover:bg-[#e7e5e5] duration-300' href='/team/1'> Enter Team </a>
                 </div>
             </div>
 

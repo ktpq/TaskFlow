@@ -1,11 +1,16 @@
 'use client'
 import React from 'react'
 import { useState } from 'react'
+import ProfileModal from './ProfileModal'
 
 
 export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const showProfile = () =>{
+    (document.getElementById('profile_modal') as HTMLDialogElement).showModal()
+  }
   return (
     <>
       <nav className="flex bg-base-100 shadow-sm justify-between items-center p-3 bg-main">
@@ -24,13 +29,13 @@ export default function Navbar() {
           <div className="w-10 rounded-full">
             <img
               alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
           </div>
         </div>
         <ul
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-main rounded-box z-1 mt-3 w-52 p-2 shadow">
-          <li><a>Your Profile</a></li>
+          <li><button onClick={showProfile}>Your Profile</button></li>
           <li><a href='/'>Logout</a></li>
         </ul>
       </div>
@@ -42,14 +47,18 @@ export default function Navbar() {
 
   {/* จอเล็ก */}
 
-  {isOpen ? (
-    <div className='bg-main px-10 space-y-4 py-5 md:hidden'>
-     <a className='block w-full py-2 text-white gradient rounded-lg shadow-lg text-center'> Your profile </a>
-     <a className='block w-full py-2 text-white gradient rounded-lg shadow-lg text-center' href='/'> Logout </a>
-  </div>
-  ) : (
-    null
-  )}
+  <div className={`overflow-hidden transition-all duration-300 ease-in-out transform origin-top px-10 space-y-4 py-5 md:hidden bg-main shadow-md ${ isOpen ? 'scale-y-100 max-h-96 opacity-100' : 'scale-y-0 max-h-0 opacity-0 pointer-events-none' }`}>
+  <button className="block w-full py-2 text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg shadow-lg text-center" onClick={showProfile}>
+    Your profile
+  </button>
+  <a className="block w-full py-2 text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-lg shadow-lg text-center" href="/" >
+    Logout
+  </a>
+</div>
+
+  {/* You can open the modal using document.getElementById('ID').showModal() method */}
+  <ProfileModal/>
+
     </>
 
 
